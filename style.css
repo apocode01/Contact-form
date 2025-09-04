@@ -1,6 +1,7 @@
 :root {
     --green200: hsl(148, 38%, 91%);
     --green600: hsl(169, 82%, 27%);
+    --green900: hsl(171, 83%, 14%);
     --red: hsl(0, 66%, 54%);
     --white: hsl(0, 0%, 100%);
     --grey500: hsl(186, 15%, 59%);
@@ -33,6 +34,7 @@ body {
     min-height: 100vh;
     background-color: var(--green200);
     font-family: "Karla", sans-serif;
+    font-weight: 400;
 }
 
 .container {
@@ -40,11 +42,31 @@ body {
     flex-direction: column;
     gap: 1rem;
     background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.title {
+    font-size: clamp(1.75rem, 0.251vw + 1.7rem, 2rem);
+    color: var(--grey900);
 }
 
 #form {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+label, legend {
+    font-size: clamp(0.875rem, 0.251vw + 0.825rem, 1.125rem);
+    color: var(--grey900);
+    cursor: pointer;
+}
+
+.nameContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 1rem;
 }
 
@@ -66,6 +88,34 @@ body {
     gap: 0.5rem;
 }
 
+#first-name, #last-name, #email, #message {
+    font-family: "Karla", sans-serif;
+    font-size: clamp(1rem, 0.251vw + 0.95rem, 1.25rem);
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    outline: solid 1px var(--grey500);
+    border: none;
+    color: var(--grey900);
+    transition: outline-color 0.3s ease-out;
+}
+
+#first-name:hover, #last-name:hover, #email:hover, #message:hover {
+    cursor: pointer;
+    outline-color: var(--grey900);
+    transition: outline-color 0.3s ease;
+}
+
+#first-name:focus, #last-name:focus, #email:focus, #message:focus {
+    outline-width: 2px;
+    outline-color: var(--grey900);
+    cursor: text;
+}
+
+#message {
+    height: calc(12em + 1.25rem);
+    resize: none;
+}
+ 
 .queryContainer {
     border: none;
 }
@@ -75,22 +125,60 @@ body {
 }
 
 .queries {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
 }
 
 .query {
-    border: solid 1px;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    outline: solid 1px var(--grey500);
+    padding: 0.625rem 1rem;
+    transition: outline-color 0.3s ease-out;
+}
+
+.query:hover {
+    cursor: pointer;
+    outline: solid 1px var(--grey900);
+    transition: outline 0.3s ease;
+}
+
+.query label {
+    font-size: clamp(1rem, 0.251vw + 0.95rem, 1.25rem);
 }
 
 .messageContainer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.consentContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.submitBtn {
+    padding: 0.8rem;
+    font-family: "Karla", sans-serif;
+    font-size: clamp(0.875rem, 0.251vw + 0.825rem, 1.125rem);
+    font-weight: 700;
+    color: var(--white);
+    background-color: var(--green600);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+}
+
+.submitBtn:hover {
+    background-color: var(--green900);
+    transition: background-color 0.3s ease;
 }
 
 .attribution { 
@@ -100,5 +188,6 @@ body {
 }
     
 .attribution a { 
-    color: hsl(228, 45%, 44%); 
+    color: var(--green600); 
+    font-weight: 700;
 }
