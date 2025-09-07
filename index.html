@@ -12,7 +12,7 @@
     <div class="container">
       <h1 class="title">Contact Us</h1>
 
-      <form id="form">
+      <form id="form" novalidate>
         <div class="nameContainer">
           <div class="firstNameContainer">
             <label for="first-name">First Name</label>
@@ -37,14 +37,14 @@
         <fieldset class="queryContainer">
           <legend>Query Type</legend>
           <div class="queries">
-            <div class="query">
+            <button type="button" class="query">
               <input type="radio" id="general-enquiry" name="query-type" value="general-enquiry" required>
               <label for="general-enquiry">General Enquiry</label>
-            </div>
-            <div class="query">
+            </button>
+            <button type="button" class="query">
               <input type="radio" id="support-request" name="query-type" value="support-request">
               <label for="support-request">Support Request</label>
-            </div>
+            </button>
           </div>
         </fieldset>
         <!-- Please select a query type -->
@@ -56,7 +56,7 @@
          </div>
 
         <div class="consentContainer">
-          <input type="checkbox" id="consent" name="consent" value="yes" required>
+          <input type="checkbox" id="consent" name="consent" required>
           <label for="consent">I consent to being contacted by the team</label>
           <!-- To submit this form, please consent to being contacted -->
         </div>
