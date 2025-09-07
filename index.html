@@ -17,21 +17,21 @@
           <div class="firstNameContainer">
             <label for="first-name">First Name</label>
             <input type="text" id="first-name" name="first-name" required>
-            <!-- This field is required -->
+            <span class="errorMessage">This field is required</span>
           </div>
 
           <div class="lastNameContainer">
             <label for="last-name">Last Name</label>
             <input type="text" id="last-name" name="last-name" required>
-            <!-- This field is required -->
+            <span class="errorMessage">This field is required</span>
           </div>
         </div>
 
         <div class="emailContainer">
           <label for="email">Email Address</label>
           <input type="email" id="email" name="email" required>
-          <!-- Please enter a valid email address -->
-          <!-- This field is required -->
+          <span class="errorMessage">This field is required</span>
+          <span class="errorMessage">Please enter a valid email address</span>
         </div>
 
         <fieldset class="queryContainer">
@@ -46,19 +46,19 @@
               <label for="support-request">Support Request</label>
             </button>
           </div>
+          <span class="errorMessage">Please select a query type</span>
         </fieldset>
-        <!-- Please select a query type -->
 
         <div class="messageContainer">
           <label for="message">Message</label>
           <textarea id="message" name="message" required></textarea>
-          <!-- This field is required -->
+          <span class="errorMessage">This field is required</span>
          </div>
 
         <div class="consentContainer">
           <input type="checkbox" id="consent" name="consent" required>
           <label for="consent">I consent to being contacted by the team</label>
-          <!-- To submit this form, please consent to being contacted -->
+          <span class="errorMessage">To submit this form, please consent to being contacted</span>
         </div>
 
         <button class="submitBtn" type="submit">Submit</button>

@@ -23,32 +23,47 @@ form.addEventListener('submit', event => {
 
     for (const field of fields) {
         if (field.type === "checkbox") {
+            const errorMessage = field.parentElement.querySelector('.errorMessage');
             if (!field.checkValidity()) {
-                validForm = false;
-                console.log("no consent");
+                errorMessage.classList.add("active");
+            }
+            else {
+                errorMessage.classList.remove("active");
             }
         } 
         else if (field.type === "email") {
+            const errorMessage = field.parentElement.querySelectorAll('.errorMessage');
             if (!field.value.trim()) {
                 validForm = false;
-                console.log("email required");  
+                errorMessage[0].classList.add("active"); 
+                errorMessage[1].classList.remove("active");
             }
-            if (!field.checkValidity()) {
+            else if (!field.checkValidity()) {
                 validForm = false;
-                console.log("email wrong");
+                errorMessage[0].classList.remove("active");
+                errorMessage[1].classList.add("active"); 
+            }
+            else {
+                errorMessage[0].classList.remove("active");
+                errorMessage[1].classList.remove("active"); 
             }
             data[field.name] = field.value;
         } 
         else {
+            const errorMessage = field.parentElement.querySelector('.errorMessage');
             if (!field.checkValidity()) {
                 validForm = false;
-                console.log(`${field.name} required`);
+                errorMessage.classList.add("active");
+            }
+            else {
+                errorMessage.classList.remove("active");
             }
             data[field.name] = field.value;
         }
     }
 
-    const radios = event.target.querySelectorAll(`input[type="radio"]`);
+    const queryContainer = event.target.querySelector(`.queryContainer`);
+    const radios = queryContainer.querySelectorAll(`input[type="radio"]`);
     let selectedQuery = false;
 
     for (const radio of radios) {
@@ -58,9 +73,13 @@ form.addEventListener('submit', event => {
         }
     }
 
+    const queryErrorMessage = queryContainer.querySelector(`.errorMessage`);
     if (!selectedQuery) {
-        console.log("query type not selected")
         validForm = false;
+        queryErrorMessage.classList.add("active");
+    }
+    else {
+        queryErrorMessage.classList.remove("active");
     }
     
     console.log(`valid form: ${validForm}`);
