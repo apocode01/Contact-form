@@ -24,15 +24,18 @@ form.addEventListener('submit', event => {
                 validForm = false;
                 errorMessage[0].classList.add("active"); 
                 errorMessage[1].classList.remove("active");
+                field.classList.add("invalid");
             }
             else if (!field.checkValidity()) {
                 validForm = false;
                 errorMessage[0].classList.remove("active");
                 errorMessage[1].classList.add("active"); 
+                field.classList.add("invalid");
             }
             else {
                 errorMessage[0].classList.remove("active");
                 errorMessage[1].classList.remove("active"); 
+                field.classList.remove("invalid");
             }
             data[field.name] = field.value;
         } 
@@ -41,9 +44,11 @@ form.addEventListener('submit', event => {
             if (!field.checkValidity()) {
                 validForm = false;
                 errorMessage.classList.add("active");
+                field.classList.add("invalid");
             }
             else {
                 errorMessage.classList.remove("active");
+                field.classList.remove("invalid");
             }
             data[field.name] = field.value;
         }

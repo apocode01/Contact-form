@@ -1,5 +1,6 @@
 :root {
     --green200: hsl(148, 38%, 91%);
+    --myGreen: #0b7663;
     --green600: hsl(169, 82%, 27%);
     --green900: hsl(171, 83%, 14%);
     --red: hsl(0, 66%, 54%);
@@ -122,6 +123,11 @@ label, legend {
     outline-width: 2px;
     outline-color: var(--grey900);
     cursor: text;
+}
+
+#first-name.invalid, #last-name.invalid, #email.invalid, #message.invalid {
+    outline-color: var(--red);
+    transition: outline-color 0.3s ease;
 }
 
 #message {
@@ -282,7 +288,7 @@ input[type=checkbox]:checked + label::before {
 }
     
 .attribution a { 
-    color: var(--green600); 
+    color: var(--myGreen); 
     font-weight: 700;
 }
 
