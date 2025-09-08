@@ -55,11 +55,13 @@ body {
 .errorMessage {
     font-size: clamp(0.875rem, 0.251vw + 0.825rem, 1.125rem);
     color: var(--red);
-    display: none;
+    visibility: hidden;
+    height: 0;
 }
 
 .errorMessage.active {
-    display: inline;
+    visibility: visible;
+    height: auto;
 }
 
 #form {
@@ -77,7 +79,7 @@ label, legend {
 .nameContainer {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-columns: repeat(2, minmax(fit-content, 1fr));
+    grid-template-rows: repeat(2, minmax(fit-content, 1fr));
     gap: 1rem;
 }
 
@@ -146,16 +148,14 @@ label, legend {
 }
 
 .query {
-    display: flex;
-    flex-direction: row;
     gap: 0.5rem;
     border-radius: 0.5rem;
     border: none;
     background-color: var(--white);
     outline: solid 1px var(--grey500);
     padding: 0.625rem 1rem;
-    font-family: "Karla", sans-serif;
     transition: outline-color 0.3s ease-out;
+    font-size: clamp(1rem, 0.251vw + 0.95rem, 1.25rem);
 }
 
 .query:hover {
@@ -164,19 +164,11 @@ label, legend {
     transition: outline 0.3s ease;
 }
 
-.query label {
-    font-size: clamp(1rem, 0.251vw + 0.95rem, 1.25rem);
-}
-
-.query.active {
-    outline-color: var(--green600);
-    background-color: var(--green200);
-    transition: outline-color 0.3s ease, background-color 0.3s ease;
-}
-
 input[type=radio] {
-    display: none;
-    appearance: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 input[type=radio] + label:before {
@@ -200,6 +192,18 @@ input[type=radio]:checked + label:before {
     background-color: var(--green600);
     box-shadow: inset 0 0 0 3px var(--green200);
     border-color: var(--green600);
+}
+
+input[type="radio"]:checked + .query {
+    outline-color: var(--green600);
+    background-color: var(--green200);
+    transition: outline-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type=radio]:focus-visible + .query {
+    outline-width: 2px;
+    outline-color: var(--grey900);
+    cursor: text;
 }
 
 .messageContainer {
@@ -261,9 +265,14 @@ input[type=checkbox] + label::before {
     background-position: center center;
 }
 
+input[type=checkbox]:focus-visible + label::before {
+    outline: 2px solid var(--grey900);
+    border: none;
+}
+
 input[type=checkbox]:checked + label::before {
-  border-color: var(--green600);
-  background-image: url("assets/images/icon-checkbox-check.svg");
+    border-color: var(--green600);
+    background-image: url("assets/images/icon-checkbox-check.svg");
 }
 
 .attribution { 
@@ -275,4 +284,67 @@ input[type=checkbox]:checked + label::before {
 .attribution a { 
     color: var(--green600); 
     font-weight: 700;
+}
+
+.successMessage {
+    position: fixed;
+    top: 2rem;
+    inset-inline: 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--grey900);
+    color: var(--white);
+    padding: clamp(1rem, 0.503vw + 0.899rem, 1.5rem);
+    border-radius: 1rem;
+    width: fit-content;
+    height: auto;
+    opacity: 0; /* Hidden at first */
+    transition: opacity 0.4s ease;
+}
+
+.messageTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.successMessage h2 {
+    font-size: clamp(1rem, 0.251vw + 0.95rem, 1.25rem);
+}
+
+.successMessage p {
+    font-size: clamp(0.875rem, 0.251vw + 0.825rem, 1.125rem);
+}
+
+@media only screen and (min-width: 60rem) {
+
+    .container {
+        width: 40rem;
+    }
+
+    .nameContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 1rem;
+    }
+
+    .queries {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 1rem;
+    }
+
+    #message {
+        height: calc(3.6em + 1.25rem);
+        resize: none;
+    }
+
+    .successMessage { 
+        width: fit-content;
+    }
 }

@@ -15,57 +15,61 @@
       <form id="form" novalidate>
         <div class="nameContainer">
           <div class="firstNameContainer">
-            <label for="first-name">First Name</label>
+            <label for="first-name">First Name *</label>
             <input type="text" id="first-name" name="first-name" required>
             <span class="errorMessage">This field is required</span>
           </div>
 
           <div class="lastNameContainer">
-            <label for="last-name">Last Name</label>
+            <label for="last-name">Last Name *</label>
             <input type="text" id="last-name" name="last-name" required>
             <span class="errorMessage">This field is required</span>
           </div>
         </div>
 
         <div class="emailContainer">
-          <label for="email">Email Address</label>
+          <label for="email">Email Address *</label>
           <input type="email" id="email" name="email" required>
           <span class="errorMessage">This field is required</span>
           <span class="errorMessage">Please enter a valid email address</span>
         </div>
 
         <fieldset class="queryContainer">
-          <legend>Query Type</legend>
+          <legend>Query Type *</legend>
           <div class="queries">
-            <button type="button" class="query">
-              <input type="radio" id="general-enquiry" name="query-type" value="general-enquiry" required>
-              <label for="general-enquiry">General Enquiry</label>
-            </button>
-            <button type="button" class="query">
-              <input type="radio" id="support-request" name="query-type" value="support-request">
-              <label for="support-request">Support Request</label>
-            </button>
+            <input type="radio" id="general-enquiry" name="query-type" value="general-enquiry" required>
+            <label for="general-enquiry" class="query">General Enquiry</label>
+            <input type="radio" id="support-request" name="query-type" value="support-request">
+            <label for="support-request" class="query">Support Request</label>
           </div>
           <span class="errorMessage">Please select a query type</span>
         </fieldset>
 
         <div class="messageContainer">
-          <label for="message">Message</label>
+          <label for="message">Message *</label>
           <textarea id="message" name="message" required></textarea>
           <span class="errorMessage">This field is required</span>
          </div>
 
         <div class="consentContainer">
           <input type="checkbox" id="consent" name="consent" required>
-          <label for="consent">I consent to being contacted by the team</label>
+          <label for="consent">I consent to being contacted by the team *</label>
           <span class="errorMessage">To submit this form, please consent to being contacted</span>
         </div>
 
         <button class="submitBtn" type="submit">Submit</button>
 
-        <!-- Message Sent! -->
-        <!-- Thanks for completing the form. We'll be in touch soon! -->
       </form>
+    </div>
+
+    <div class="successMessage">
+      <div class="messageTitle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21">
+          <path fill="#fff" d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z"/>
+        </svg>
+        <h2>Message Sent!</h2>
+      </div>
+      <p>Thanks for completing the form. We'll be in touch soon!</p>
     </div>
   </main>
 

@@ -1,17 +1,4 @@
 const form = document.getElementById(`form`);
-const queryButtons = form.querySelectorAll(`.query`);
-
-queryButtons.forEach(queryBtn => {
-    queryBtn.addEventListener('click', () => {
-        queryButtons.forEach(qBtn => {
-            qBtn.classList.remove(`active`);
-        })
-
-        const radioBtn = queryBtn.querySelector(`input[type="radio"]`);
-        radioBtn.checked = true;
-        queryBtn.classList.add(`active`);
-    })
-})
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -82,8 +69,8 @@ form.addEventListener('submit', event => {
         queryErrorMessage.classList.remove("active");
     }
     
-    console.log(`valid form: ${validForm}`);
     if (validForm) {
-        console.log(data);
+        const successMessage = document.querySelector(`.successMessage`);
+        successMessage.style.opacity = "1";
     }
 });
