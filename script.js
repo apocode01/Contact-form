@@ -72,5 +72,13 @@ form.addEventListener('submit', event => {
     if (validForm) {
         const successMessage = document.querySelector(`.successMessage`);
         successMessage.style.opacity = "1";
+        event.target.reset();
     }
 });
+
+const closePopupBtn = document.querySelector(`.close-popup`);
+
+closePopupBtn.addEventListener('click', () => {
+    const successMessage = document.querySelector(`.successMessage`);
+    successMessage.style.opacity = "0";
+})

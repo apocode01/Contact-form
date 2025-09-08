@@ -304,11 +304,26 @@ input[type=checkbox]:checked + label::before {
     transition: opacity 0.4s ease;
 }
 
-.messageTitle {
+.header-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+}   
+
+.close-popup {
+    cursor: pointer; /* shows pointer on hover */
+    border: none;    /* remove default button border */
+    background: none; /* remove default button background */
+    font-size: clamp(1rem, 0.251vw + 0.95rem, 1.25rem);
+    color: var(--white)
 }
 
 .successMessage h2 {
